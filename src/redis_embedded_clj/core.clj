@@ -5,12 +5,10 @@
             [redis-embedded-clj.state :as state]))
 
 (def default-config
-  {:port         5432
-   :log-redirect nil})
+  {:port         6379})
 
 (defn ->ig-config [config]
-  {:redis-embedded-clj.redis/redis {:port (:port config)
-                                       :log-redirect (:log-redirect config)}})
+  {:redis-embedded-clj.redis/redis {:port (:port config)}})
 
 (defn halt-rd! []
   (when @state/state

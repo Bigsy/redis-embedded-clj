@@ -10,4 +10,4 @@
                  [org.clojure/tools.namespace "1.3.0"]
                  [org.slf4j/slf4j-jdk14 "2.0.1"]]
 
-  :profiles {:dev {:dependencies [[org.clojure/java.jdbc "0.7.12"]]}})
+  :profiles {:dev {:dependencies [[com.taoensso/carmine "3.3.0-RC1"]]}})
