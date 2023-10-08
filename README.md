@@ -31,8 +31,7 @@ Embedded redis for clojure - based on https://github.com/signalapp/embedded-redi
 (defn around-all
   [f]
   (with-rd-fn (merge default-config
-                           {:port 54321
-                           :log-redirect "wibble.log"})
+                           {:port 6379})
                     f))
 
 (use-fixtures :once around-all)
