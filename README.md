@@ -1,4 +1,5 @@
 # redis-embedded-clj
+[![Clojars Project](https://img.shields.io/clojars/v/org.clojars.bigsy/redis-embedded-clj.svg)](https://clojars.org/org.clojars.bigsy/redis-embedded-clj)
 
 Embedded redis for clojure - based on https://github.com/signalapp/embedded-redis
 
@@ -30,9 +31,8 @@ Embedded redis for clojure - based on https://github.com/signalapp/embedded-redi
 
 (defn around-all
   [f]
-  (with-rd-fn (merge default-config
-                           {:port 6379})
-                    f))
+  (with-rd-fn {:port 6379}
+              f))
 
 (use-fixtures :once around-all)
 
