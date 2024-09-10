@@ -1,18 +1,30 @@
 (ns redis-embedded-clj.redis
-  (:require [integrant.core :as ig]
-            [clojure.java.io :as io])
+  (:require [clojure.tools.logging :as log]
+            [integrant.core :as ig])
   (:import
     (redis.embedded  RedisServer)))
 
 (defn ->rd [port]
-  (let [rd (-> (RedisServer. port))]
-    (.start rd)
-    (prn (.isActive rd))
-    rd))
+  (try
+    (let [rd (RedisServer. port)]
+      (.start rd)
+      (if (.isActive rd)
+        (do
+          (log/info "Redis server started on port:" port)
+          rd)
+        (do
+          (log/error "Failed to start Redis server on port:" port)
+          nil)))
+    (catch Exception e
+      (log/error e "Exception occurred while starting Redis server"))))
 
 (defn halt! [rd]
   (when rd
-    (.stop rd)))
+    (try
+      (.stop rd)
+      (log/info "Redis server stopped")
+      (catch Exception e
+        (log/error e "Exception occurred while stopping Redis server")))))
 
 (defmethod ig/init-key ::redis [_ {:keys [port]}]
   (->rd port))
