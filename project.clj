@@ -7,7 +7,6 @@
                  [integrant "0.11.0"]
                  [org.signal/embedded-redis "0.9.0"]
                  [org.clojure/tools.logging "1.3.0"]
-                 [org.clojure/tools.namespace "1.5.0"]
-                 [org.slf4j/slf4j-jdk14 "2.0.16"]]
+                 [org.clojure/tools.namespace "1.5.0"]]
 
   :profiles {:dev {:dependencies [[com.taoensso/carmine "3.4.1"]]}})
