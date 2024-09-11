@@ -1,4 +1,4 @@
-(defproject org.clojars.bigsy/redis-embedded-clj "0.0.2"
+(defproject org.clojars.bigsy/redis-embedded-clj "0.0.3"
   :description "Embedded redis for clojure"
   :url "https://github.com/Bigsy/redis-embedded-clj"
   :license {:name "Eclipse Public License"
